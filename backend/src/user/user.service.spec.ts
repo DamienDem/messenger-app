@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from '../prisma/prisma.service';
 import { UserService } from './user.service';
@@ -17,10 +18,12 @@ describe('UserService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should be return user data', async () => {
-    const data = {id:9, email: "test6",password:"password", name:"test", firstName:"test"}
-    const res = await service.createUser(data)
-    expect(JSON.stringify(res)).toBe(JSON.stringify(data))
+  it('should be return user data', () => {
+    const data = { email: "test6",password:"password", name:"test", firstName:"test"}
+    const createUser = {
+      create: jest.fn().mockReturnValue(data)
+    }
+    expect(createUser.create(data)).toBe(data)
   })
 
 });
