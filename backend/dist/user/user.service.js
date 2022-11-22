@@ -22,16 +22,23 @@ let UserService = class UserService {
         });
     }
     findAll() {
-        return `This action returns all user`;
+        return this.prisma.user.findMany({});
     }
     findOne(id) {
-        return `This action returns a #${id} user`;
+        return this.prisma.user.findUnique({
+            where: { id: id },
+        });
     }
-    update(id, updateUserDto) {
-        return `This action updates a #${id} user`;
+    update(id, data) {
+        return this.prisma.user.update({
+            where: { id: id },
+            data,
+        });
     }
     remove(id) {
-        return `This action removes a #${id} user`;
+        return this.prisma.user.delete({
+            where: { id: id },
+        });
     }
 };
 UserService = __decorate([

@@ -9,7 +9,7 @@ export class CreateUserDto {
 
   @ApiProperty()
   name: string;
-  
+
   @ApiProperty()
   firstName: string;
 }
