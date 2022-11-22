@@ -16,10 +16,22 @@ let UserService = class UserService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async createUser(data) {
+    create(data) {
         return this.prisma.user.create({
             data,
         });
+    }
+    findAll() {
+        return `This action returns all user`;
+    }
+    findOne(id) {
+        return `This action returns a #${id} user`;
+    }
+    update(id, updateUserDto) {
+        return `This action updates a #${id} user`;
+    }
+    remove(id) {
+        return `This action removes a #${id} user`;
     }
 };
 UserService = __decorate([

@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
-import { PrismaService } from '../prisma/prisma.service';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
@@ -10,7 +8,7 @@ describe('UserController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
-      providers: [UserService, PrismaService],
+      providers: [UserService],
     }).compile();
 
     controller = module.get<UserController>(UserController);
@@ -18,8 +16,5 @@ describe('UserController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
-  });
-  it('should be defined', () => {
-    expect(controller.create).toBeDefined();
   });
 });
