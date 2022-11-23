@@ -9,13 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageModule = void 0;
 const common_1 = require("@nestjs/common");
 const message_service_1 = require("./message.service");
-const message_controller_1 = require("./message.controller");
+const message_gateway_1 = require("./message.gateway");
+const prisma_service_1 = require("../prisma/prisma.service");
 let MessageModule = class MessageModule {
 };
 MessageModule = __decorate([
     (0, common_1.Module)({
-        controllers: [message_controller_1.MessageController],
-        providers: [message_service_1.MessageService],
+        providers: [message_gateway_1.MessageGateway, message_service_1.MessageService, prisma_service_1.PrismaService]
     })
 ], MessageModule);
 exports.MessageModule = MessageModule;

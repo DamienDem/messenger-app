@@ -15,12 +15,11 @@ const user_service_1 = require("./user/user.service");
 const prisma_module_1 = require("./prisma/prisma.module");
 const user_module_1 = require("./user/user.module");
 const message_module_1 = require("./message/message.module");
-const socket_module_1 = require("./socket/socket.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, user_module_1.UserModule, message_module_1.MessageModule, socket_module_1.SocketModule],
+        imports: [prisma_module_1.PrismaModule, user_module_1.UserModule, message_module_1.MessageModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, prisma_service_1.PrismaService, user_service_1.UserService],
     })

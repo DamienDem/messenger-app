@@ -1,15 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { UpdateMessageDto } from './dto/update-message.dto';
 
 @Injectable()
 export class MessageService {
-  create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message';
+  constructor(private prisma: PrismaService) {}
+  create(data: CreateMessageDto): Promise<CreateMessageDto> {
+    return this.prisma.message.create({
+      data,
+    });
   }
 
-  findAll() {
-    return `This action returns all message`;
+  findAll(): Promise<CreateMessageDto[]> {
+    return this.prisma.message.findMany();
   }
 
   findOne(id: number) {
@@ -17,7 +21,7 @@ export class MessageService {
   }
 
   update(id: number, updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${id} message`;
+    return `This action updates a #${id} message with data:${updateMessageDto}`;
   }
 
   remove(id: number) {
