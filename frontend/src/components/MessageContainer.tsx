@@ -1,0 +1,20 @@
+const MessageContainer = ({
+  message,
+}: {
+  message: { content: string; userId: number };
+}) => {
+  const id = 1;
+  return (
+    <div
+      className={` rounded-full flex m-3 ${
+        message.userId === id ? "justify-end" : "justify-start"
+      }`}
+    >
+      <span className={`rounded-full p-1 ${ message.userId === id ? "bg-blue-200" : "bg-slate-200"}` }>
+        {message.content}
+      </span>
+    </div>
+  );
+};
+
+export default MessageContainer;
