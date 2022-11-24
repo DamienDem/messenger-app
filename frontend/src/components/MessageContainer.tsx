@@ -10,7 +10,7 @@ const MessageContainer = ({
         message.userId === id ? "justify-end" : "justify-start"
       }`}
     >
-      <span className={`rounded-full p-1 ${ message.userId === id ? "bg-blue-200" : "bg-slate-200"}` }>
+      <span className={`rounded-full px-4 py-0.5 ${ message.userId === id ? "bg-blue-200" : "bg-slate-200"}` }>
         {message.content}
       </span>
     </div>
