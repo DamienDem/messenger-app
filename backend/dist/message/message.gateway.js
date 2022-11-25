@@ -83,7 +83,11 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], MessageGateway.prototype, "remove", null);
 MessageGateway = __decorate([
-    (0, websockets_1.WebSocketGateway)(),
+    (0, websockets_1.WebSocketGateway)({
+        cors: {
+            origin: 'http://localhost:3001'
+        }
+    }),
     __metadata("design:paramtypes", [message_service_1.MessageService])
 ], MessageGateway);
 exports.MessageGateway = MessageGateway;

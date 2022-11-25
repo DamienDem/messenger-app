@@ -10,7 +10,11 @@ import { UpdateMessageDto } from './dto/update-message.dto';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway()
+@WebSocketGateway({
+  cors: {
+    origin:'http://localhost:3001'
+  }
+})
 export class MessageGateway implements OnGatewayConnection {
   constructor(private readonly messageService: MessageService) {}
   @WebSocketServer()

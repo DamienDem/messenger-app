@@ -15,13 +15,17 @@ const user_service_1 = require("./user/user.service");
 const prisma_module_1 = require("./prisma/prisma.module");
 const user_module_1 = require("./user/user.module");
 const message_module_1 = require("./message/message.module");
+const authentication_controller_1 = require("./authentication/authentication.controller");
+const authentication_service_1 = require("./authentication/authentication.service");
+const authentication_module_1 = require("./authentication/authentication.module");
+const dist_1 = require("@nestjs/jwt/dist");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, user_module_1.UserModule, message_module_1.MessageModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, prisma_service_1.PrismaService, user_service_1.UserService],
+        imports: [prisma_module_1.PrismaModule, user_module_1.UserModule, message_module_1.MessageModule, authentication_module_1.AuthenticationModule],
+        controllers: [app_controller_1.AppController, authentication_controller_1.AuthenticationController],
+        providers: [app_service_1.AppService, prisma_service_1.PrismaService, user_service_1.UserService, authentication_service_1.AuthenticationService, dist_1.JwtService],
     })
 ], AppModule);
 exports.AppModule = AppModule;
