@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UpdateUserDto } from 'src/user/dto/update-user.dto';
 import { UserService } from 'src/user/user.service';
@@ -10,6 +10,14 @@ export class AuthenticationService {
         private readonly jwtService: JwtService
         ) { }
 
+        public async valideUser (email: string, password: string) {
+          const user = await this.userService.findByEmail(email)
+          if (user && user.password === password) {
+            const { password, ...result } = user;
+            return result;
+          }
+          return null
+        }
     public async login (user: UpdateUserDto) {
         const payload = { email: user.email};
         user.password = undefined;

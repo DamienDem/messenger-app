@@ -29,6 +29,11 @@ let UserService = class UserService {
             where: { id: id },
         });
     }
+    findByEmail(email) {
+        return this.prisma.user.findUnique({
+            where: { email: email },
+        });
+    }
     update(id, data) {
         return this.prisma.user.update({
             where: { id: id },

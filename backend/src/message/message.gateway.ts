@@ -20,8 +20,8 @@ export class MessageGateway implements OnGatewayConnection {
   @WebSocketServer()
   server: Server;
 
-  async handleConnection(socket: Socket) {
-    await console.log(socket);
+    async handleConnection(socket: Socket) {
+    await socket
   }
 
   @SubscribeMessage('sendMessage')

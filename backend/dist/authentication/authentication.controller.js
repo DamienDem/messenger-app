@@ -15,15 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthenticationController = void 0;
 const common_1 = require("@nestjs/common");
 const authentication_service_1 = require("./authentication.service");
+const local_auth_guard_1 = require("./local-auth.guard");
 let AuthenticationController = class AuthenticationController {
     constructor(authentication) {
         this.authentication = authentication;
     }
     async login(request) {
-        return this.authentication.login(request.user);
+        return this.authentication.login(request.body);
     }
 };
 __decorate([
+    (0, common_1.UseGuards)(local_auth_guard_1.LocalAuthGuard),
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),

@@ -10,10 +10,11 @@ import { AuthenticationController } from './authentication/authentication.contro
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JwtService } from '@nestjs/jwt/dist';
+import { UserController } from './user/user.controller';
 
 @Module({
-  imports: [PrismaModule, UserModule, MessageModule, AuthenticationModule],
-  controllers: [AppController, AuthenticationController],
+  imports: [MessageModule,AuthenticationModule],
+  controllers: [AppController, AuthenticationController, UserController],
   providers: [AppService, PrismaService, UserService, AuthenticationService, JwtService],
 })
 export class AppModule {}

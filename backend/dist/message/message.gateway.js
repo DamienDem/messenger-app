@@ -22,7 +22,7 @@ let MessageGateway = class MessageGateway {
         this.messageService = messageService;
     }
     async handleConnection(socket) {
-        await console.log(socket);
+        await socket;
     }
     create(content, userId) {
         userId = 2;

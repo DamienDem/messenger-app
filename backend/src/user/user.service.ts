@@ -5,7 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
   create(data: CreateUserDto): Promise<CreateUserDto | null> {
     return this.prisma.user.create({
       data,
@@ -19,6 +19,11 @@ export class UserService {
   findOne(id: number) {
     return this.prisma.user.findUnique({
       where: { id: id },
+    });
+  }
+  findByEmail(email: string) {
+    return this.prisma.user.findUnique({
+      where: { email: email },
     });
   }
 
