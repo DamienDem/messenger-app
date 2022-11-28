@@ -37,14 +37,14 @@ let AuthenticationService = class AuthenticationService {
         }
         return null;
     }
-    async login(user) {
-        const payload = { email: user.email };
+    async login(data) {
+        const user = await this.userService.findByEmail(data.email);
         user.password = undefined;
         return {
-            access_token: this.jwtService.sign(payload, {
+            access_token: this.jwtService.sign(user, {
                 privateKey: 'secret',
             }),
-            user: user,
+            data: user,
         };
     }
 };

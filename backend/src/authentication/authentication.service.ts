@@ -18,15 +18,16 @@ export class AuthenticationService {
           }
           return null
         }
-    public async login (user: UpdateUserDto) {
-        const payload = { email: user.email};
+    public async login (data: UpdateUserDto) {
+      const user = await this.userService.findByEmail(data.email)
         user.password = undefined;
+     
         return {
             // TODO : check if we can avoid calling sign function with the env
-            access_token: this.jwtService.sign(payload, {
+            access_token: this.jwtService.sign(user, {
               privateKey: 'secret',
             }),
-            user: user,
+            data: user,
           };
     }
 }

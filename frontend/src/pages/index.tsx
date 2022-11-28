@@ -1,19 +1,18 @@
-import { useEffect } from 'react';
-import {io} from 'socket.io-client';
-import Header from '../components/header';
-import Message from '../components/message';
-
-export default function Home() {
-
-  useEffect(() => {
-    let socket = io('http://localhost:3000');
-
-    socket.emit('sendMessage', )
-  })
+import { useSession, signIn, signOut } from "next-auth/react"
+export default function Component() {
+  const { data: session } = useSession()
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    )
+  }
   return (
     <>
-    <Header/>
-    <Message/>
+      Not signed in <br />
+      <button onClick={() => signIn('credentials', {callbackUrl: 'http://localhost:3001/messenger'})}>Sign in</button>
     </>
-  );
+  )
 }

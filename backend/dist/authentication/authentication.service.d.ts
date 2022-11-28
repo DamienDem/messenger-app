@@ -11,8 +11,8 @@ export declare class AuthenticationService {
         name: string;
         firstName: string;
     }>;
-    login(user: UpdateUserDto): Promise<{
+    login(data: UpdateUserDto): Promise<{
         access_token: string;
-        user: UpdateUserDto;
+        data: import(".prisma/client").User;
     }>;
 }

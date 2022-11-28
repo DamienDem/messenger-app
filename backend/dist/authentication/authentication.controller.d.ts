@@ -4,6 +4,6 @@ export declare class AuthenticationController {
     constructor(authentication: AuthenticationService);
     login(request: any): Promise<{
         access_token: string;
-        user: import("../user/dto/update-user.dto").UpdateUserDto;
+        data: import(".prisma/client").User;
     }>;
 }
