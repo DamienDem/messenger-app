@@ -1,7 +1,7 @@
 const MessageContainer = ({
   message,
 }: {
-  message: { content: string; userId: number };
+  message: any;
 }) => {
   const id = 1;
   return (

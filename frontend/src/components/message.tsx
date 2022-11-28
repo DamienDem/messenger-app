@@ -1,37 +1,19 @@
 import { useState } from "react";
 import MessageContainer from "./MessageContainer";
 
-const messages = [
-  {
-    content: "aaaaaaaa",
-    userId: 1,
-  },
-  {
-    content: "bbbbbbb",
-    userId: 2,
-  },
-  {
-    content: "cccccc",
-    userId: 2,
-  },
-  {
-    content: "ddddddd",
-    userId: 1,
-  },
-  {
-    content: "eeeeeee",
-    userId: 2,
-  },
-];
-const Message = () => {
+
+const Message = ({send, messages}: {send:Function, messages:string[]}) => {
   const [messageToSend, setMessageToSend] = useState("");
+ 
   const handleSubmit = () => {
     console.log(messageToSend);
   };
+
+
   return (
     <div className="m-2">
       <div>
-        {messages.map((message, index) => {
+        {messages?.map((message, index) => {
           return <MessageContainer key={index} message={message} />;
         })}
       </div>
